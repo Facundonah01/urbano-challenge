@@ -1,11 +1,11 @@
-FROM node:alpine as build
+FROM node:20 as build
 
 WORKDIR /app
 
 COPY . .
 
 RUN yarn
-RUN yarn build
+RUN NODE_OPTIONS=--openssl-legacy-provider yarn build
 
 #---
 

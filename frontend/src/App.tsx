@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 import useAuth from './hooks/useAuth';
 import Contents from './pages/Contents';
@@ -33,8 +33,10 @@ export default function App() {
     }
   }, []);
 
+  const BrowserRouterAny = BrowserRouter as any;
+
   return isLoaded ? (
-    <Router>
+    <BrowserRouterAny>
       <Switch>
         <PrivateRoute exact path="/" component={Dashboard} />
         <PrivateRoute exact path="/users" component={Users} roles={['admin']} />
@@ -43,6 +45,6 @@ export default function App() {
 
         <AuthRoute exact path="/login" component={Login} />
       </Switch>
-    </Router>
+    </BrowserRouterAny>
   ) : null;
 }
