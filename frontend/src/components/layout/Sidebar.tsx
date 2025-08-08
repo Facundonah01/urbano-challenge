@@ -22,20 +22,31 @@ export default function Sidebar({ className }: SidebarProps) {
   };
 
   return (
-    <div className={'sidebar ' + className}>
-      <Link to="/" className="no-underline text-black">
-        <h1 className="font-semibold text-center">Carna Project</h1>
+    <div
+      className={'sidebar ' + className}
+      style={{
+        backgroundImage: `url(/sidemenu-bg.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <Link to="/" className="no-underline flex justify-center">
+        <img
+          src="/urbano-logo-white.png"
+          alt="Urbano Logo"
+          className="h-10 w-auto"
+        />
       </Link>
-      <nav className="mt-5 flex flex-col gap-3 flex-grow">
+      <nav className="mt-14 flex flex-col gap-3 flex-grow">
         <SidebarItem to="/">
-          <Home /> Dashboard
+          <Home color="white" /> Dashboard
         </SidebarItem>
         <SidebarItem to="/courses">
-          <BookOpen /> Courses
+          <BookOpen color="white" /> Courses
         </SidebarItem>
         {authenticatedUser.role === 'admin' ? (
           <SidebarItem to="/users">
-            <Users /> Users
+            <Users color="white" /> Users
           </SidebarItem>
         ) : null}
       </nav>
@@ -45,6 +56,18 @@ export default function Sidebar({ className }: SidebarProps) {
       >
         <LogOut /> Logout
       </button>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          pointerEvents: 'none',
+          zIndex: -1,
+        }}
+      />
     </div>
   );
 }

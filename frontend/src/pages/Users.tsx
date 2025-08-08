@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 
 import Layout from '../components/layout';
+import Input from '../components/shared/Input';
 import Modal from '../components/shared/Modal';
 import UsersTable from '../components/users/UsersTable';
 import useAuth from '../hooks/useAuth';
@@ -58,7 +59,7 @@ export default function Users() {
 
   return (
     <Layout>
-      <h1 className="font-semibold text-3xl mb-5">Manage Users</h1>
+      <h1 className="font-normal text-3xl mb-5">Manage Users</h1>
       <hr />
       <button
         className="btn my-5 flex gap-2 w-full sm:w-auto justify-center"
@@ -69,25 +70,25 @@ export default function Users() {
 
       <div className="table-filter mt-2">
         <div className="flex flex-row gap-5">
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
+            className="w-1/2"
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
+            className="w-1/2"
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="flex flex-row gap-5">
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
+            className="w-1/2"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -112,7 +113,7 @@ export default function Users() {
       {/* Add User Modal */}
       <Modal show={addUserShow}>
         <div className="flex">
-          <h1 className="font-semibold mb-3">Add User</h1>
+          <h1 className="font-normal mb-3">Add User</h1>
           <button
             className="ml-auto focus:outline-none"
             onClick={() => {
@@ -131,34 +132,32 @@ export default function Users() {
           onSubmit={handleSubmit(saveUser)}
         >
           <div className="flex flex-col gap-5 sm:flex-row">
-            <input
+            <Input
               type="text"
-              className="input sm:w-1/2"
+              className="sm:w-1/2"
               placeholder="First Name"
               required
               disabled={isSubmitting}
               {...register('firstName')}
             />
-            <input
+            <Input
               type="text"
-              className="input sm:w-1/2"
+              className="sm:w-1/2"
               placeholder="Last Name"
               required
               disabled={isSubmitting}
               {...register('lastName')}
             />
           </div>
-          <input
+          <Input
             type="text"
-            className="input"
             required
             placeholder="Username"
             disabled={isSubmitting}
             {...register('username')}
           />
-          <input
+          <Input
             type="password"
-            className="input"
             required
             placeholder="Password (min 6 characters)"
             disabled={isSubmitting}

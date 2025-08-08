@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth';
 import Course from '../../models/course/Course';
 import UpdateCourseRequest from '../../models/course/UpdateCourseRequest';
 import courseService from '../../services/CourseService';
+import Input from '../shared/Input';
 import Modal from '../shared/Modal';
 import Table from '../shared/Table';
 import TableItem from '../shared/TableItem';
@@ -111,9 +112,9 @@ export default function CoursesTable({ data, isLoading }: UsersTableProps) {
       <Modal show={deleteShow}>
         <AlertTriangle size={30} className="text-red-500 mr-5 fixed" />
         <div className="ml-10">
-          <h3 className="mb-2 font-semibold">Delete Course</h3>
+          <h3 className="mb-2 font-normal">Delete Course</h3>
           <hr />
-          <p className="mt-2">
+          <p className="font-light mt-2">
             Are you sure you want to delete the course? All of course's data
             will be permanently removed.
             <br />
@@ -152,7 +153,7 @@ export default function CoursesTable({ data, isLoading }: UsersTableProps) {
       {/* Update Course Modal */}
       <Modal show={updateShow}>
         <div className="flex">
-          <h1 className="font-semibold mb-3">Update Course</h1>
+          <h1 className="font-normal mb-3">Update Course</h1>
           <button
             className="ml-auto focus:outline-none"
             onClick={() => {
@@ -170,16 +171,14 @@ export default function CoursesTable({ data, isLoading }: UsersTableProps) {
           className="flex flex-col gap-5 mt-5"
           onSubmit={handleSubmit(handleUpdate)}
         >
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Name"
             required
             {...register('name')}
           />
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Description"
             required
             disabled={isSubmitting}

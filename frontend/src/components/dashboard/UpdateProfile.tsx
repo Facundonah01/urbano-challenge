@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Loader } from 'react-feather';
+import { Loader, Settings } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 
 import useAuth from '../../hooks/useAuth';
 import UpdateUserRequest from '../../models/user/UpdateUserRequest';
 import userService from '../../services/UserService';
+import Input from '../shared/Input';
 
 export default function UpdateProfile() {
   const { authenticatedUser } = useAuth();
@@ -39,59 +40,65 @@ export default function UpdateProfile() {
 
   if (!isLoading) {
     return (
-      <div className="card shadow">
+      <div className="card shadow w-full max-w-2xl mx-auto mt-5">
         <form
-          className="flex mt-3 flex-col gap-3 justify-center md:w-1/2 lg:w-1/3 mx-auto items-center"
+          className="flex flex-col gap-3 justify-center my-5 mx-10 items-center"
           onSubmit={handleSubmit(handleUpdateUser)}
         >
-          <h1 className="font-semibold text-4xl mb-10">{`Welcome ${data.firstName}`}</h1>
-          <hr />
+          <div className="w-14 h-14 rounded-full bg-white-hover flex items-center justify-center">
+            <Settings size={24} className="text-brand-primary" />
+          </div>
+          <div className="mb-8">
+            <h1 className="font-normal text-xl text-center">
+              Profile settings
+            </h1>
+            <h3 className="font-light text-sm text-secundary-text text-center">
+              Update your credentials and personal information
+            </h3>
+          </div>
+
           <div className="flex gap-3 w-full">
             <div className="w-1/2">
-              <label className="font-semibold">First Name</label>
-              <input
+              <label className="font-normal">First Name</label>
+              <Input
                 type="text"
-                className="input w-full mt-1"
+                placeholder="First Name"
                 defaultValue={data.firstName}
                 disabled={isSubmitting}
-                placeholder="First Name"
                 {...register('firstName')}
               />
             </div>
             <div className="w-1/2">
-              <label className="font-semibold">Last Name</label>
-              <input
+              <label className="font-normal">Last Name</label>
+              <Input
                 type="text"
-                className="input w-full mt-1"
+                placeholder="Last Name"
                 defaultValue={data.lastName}
                 disabled={isSubmitting}
-                placeholder="Last Name"
                 {...register('lastName')}
               />
             </div>
           </div>
           <div className="w-full">
-            <label className="font-semibold">Username</label>
-            <input
+            <label className="font-normal">Username</label>
+            <Input
               type="text"
-              className="input w-full mt-1"
+              placeholder="Username"
               defaultValue={data.username}
               disabled={isSubmitting}
-              placeholder="Username"
               {...register('username')}
             />
           </div>
           <div className="w-full">
-            <label className="font-semibold">Password</label>
-            <input
+            <label className="font-normal">Password</label>
+            <Input
               type="password"
-              className="input w-full mt-1"
               placeholder="Password (min 6 characters)"
               disabled={isSubmitting}
               {...register('password')}
             />
           </div>
-          <button className="btn w-full" disabled={isSubmitting}>
+          <button className="btn w-full mt-8" disabled={isSubmitting}>
             {isSubmitting ? (
               <Loader className="animate-spin mx-auto" />
             ) : (

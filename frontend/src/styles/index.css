@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-primary: #c1292e;
+    --brand-background: #ffffff;
+    --brand-active: #c1292e;
+    --brand-header-background: #e2e1e1;
+    --primary-red: #c1292e;
+    --red-hover: #c1292e;
+    --primary-white: #ffffff;
+    --white-hover: #f2f2f2;
+    --secundary-text: #8A8A8A;
+  }
+  
   html,
   body,
   #root {
@@ -24,8 +36,12 @@
 
 @layer components {
   .btn {
-    @apply p-3 bg-blue-500 rounded-md focus:outline-none text-white;
-    @apply hover:bg-blue-700 transition-all;
+    @apply p-3 rounded-md focus:outline-none text-white;
+    background-color: var(--brand-primary);
+    transition: all 0.3s;
+    &:hover {
+      background-color: var(--red-hover);
+    }
     @apply focus:ring disabled:opacity-50;
   }
   .btn.danger {
@@ -34,8 +50,13 @@
   .input {
     @apply rounded-md border-gray-300 transition-colors disabled:opacity-50;
   }
+  .input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
   .card {
-    @apply p-5 rounded-md bg-white border;
+    @apply p-5 rounded-lg bg-white border;
   }
   .table-container {
     @apply border rounded-lg mt-5 shadow overflow-x-auto;
