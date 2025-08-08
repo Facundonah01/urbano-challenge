@@ -32,9 +32,13 @@ Esta configuración indica a TypeScript dónde buscar las definiciones de tipos 
 
 ` 5. Uso de NODE_OPTIONS=--openssl-legacy-provider (No recomendado para Prod))`
 
-El uso de NODE_OPTIONS=--openssl-legacy-provider no seria recomendado para prod, se deberia encarar una actualizacion de dependencias de draco, react-script y tailwind. Por cuestion de tiempos no se llego pero es necesario.
+El uso de NODE_OPTIONS=--openssl-legacy-provider no seria recomendado para prod, se deberia encarar una actualizacion de dependencias de draco, react-script y tailwind. Por cuestion de tiempos no se llego pero es necesario. Sumado a lo mismo se utiliza un any type en BrowserRouter que deberia encararse diferente actualizando lo faltante.
 
 ### 6. Mejora visual
 
 Se mejoro el aspecto visual en algunas secciones siempre intentando respetar la formular principal, ya que se penso en una solucion rapida.
 Se utilizo tamaños de fuente y grosores mas pequeños para modernizarla un poco y se aplico la paleta de colores de la empresa.
+
+### 7. Mejora estructural frontend
+
+Mejor gestion y reutilizacion de codigo mediante componentes, generando mas claridad en el codigo y menos lineas. Se podria mejorar un poco mas
