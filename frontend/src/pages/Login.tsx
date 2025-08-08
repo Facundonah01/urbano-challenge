@@ -3,6 +3,7 @@ import { Loader } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
+import Input from '../components/shared/Input';
 import useAuth from '../hooks/useAuth';
 import LoginRequest from '../models/auth/LoginRequest';
 import authService from '../services/AuthService';
@@ -30,25 +31,35 @@ export default function Login() {
   };
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div
+      className="h-full flex justify-center items-center"
+      style={{
+        backgroundImage: `url(/bg.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="card shadow">
-        <h1 className="mb-3 text-center font-semibold text-4xl">Login</h1>
-        <hr />
+        <img
+          src="/urbano-logo-black.png"
+          alt="Urbano Logo"
+          className="h-10 w-auto mx-auto"
+        />
         <form
           className="flex flex-col gap-5 mt-8 w-64"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <input
+          <Input
             type="text"
-            className="input sm:text-lg"
+            className="sm:text-lg"
             placeholder="Username"
             required
             disabled={isSubmitting}
             {...register('username')}
           />
-          <input
+          <Input
             type="password"
-            className="input sm:text-lg"
+            className="sm:text-lg"
             placeholder="Password"
             required
             disabled={isSubmitting}

@@ -6,6 +6,7 @@ import useAuth from '../../hooks/useAuth';
 import Content from '../../models/content/Content';
 import UpdateContentRequest from '../../models/content/UpdateContentRequest';
 import contentService from '../../services/ContentService';
+import Input from '../shared/Input';
 import Modal from '../shared/Modal';
 import Table from '../shared/Table';
 import TableItem from '../shared/TableItem';
@@ -118,9 +119,9 @@ export default function ContentsTable({
       <Modal show={deleteShow}>
         <AlertTriangle size={30} className="text-red-500 mr-5 fixed" />
         <div className="ml-10">
-          <h3 className="mb-2 font-semibold">Delete Content</h3>
+          <h3 className="mb-2 font-normal">Delete Content</h3>
           <hr />
-          <p className="mt-2">
+          <p className="font-light mt-2">
             Are you sure you want to delete the content? All of content's data
             will be permanently removed.
             <br />
@@ -161,7 +162,7 @@ export default function ContentsTable({
       {selectedContentId ? (
         <Modal show={updateShow}>
           <div className="flex">
-            <h1 className="font-semibold mb-3">Update Content</h1>
+            <h1 className="font-normal mb-3">Update Content</h1>
             <button
               className="ml-auto focus:outline-none"
               onClick={() => {
@@ -179,16 +180,14 @@ export default function ContentsTable({
             className="flex flex-col gap-5 mt-5"
             onSubmit={handleSubmit(handleUpdate)}
           >
-            <input
+            <Input
               type="text"
-              className="input"
               placeholder="Name"
               required
               {...register('name')}
             />
-            <input
+            <Input
               type="text"
-              className="input"
               placeholder="Description"
               required
               disabled={isSubmitting}

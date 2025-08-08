@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 
 import ContentsTable from '../components/content/ContentsTable';
 import Layout from '../components/layout';
+import Input from '../components/shared/Input';
 import Modal from '../components/shared/Modal';
 import useAuth from '../hooks/useAuth';
 import CreateContentRequest from '../models/content/CreateContentRequest';
@@ -55,7 +56,7 @@ export default function Course() {
 
   return (
     <Layout>
-      <h1 className="font-semibold text-3xl mb-5">
+      <h1 className="font-normal text-3xl mb-5">
         {!userQuery.isLoading ? `${userQuery.data.name} Contents` : ''}
       </h1>
       <hr />
@@ -70,16 +71,16 @@ export default function Course() {
 
       <div className="table-filter">
         <div className="flex flex-row gap-5">
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
+            className="w-1/2"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
+            className="w-1/2"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -92,7 +93,7 @@ export default function Course() {
       {/* Add User Modal */}
       <Modal show={addContentShow}>
         <div className="flex">
-          <h1 className="font-semibold mb-3">Add Content</h1>
+          <h1 className="font-normal mb-3">Add Content</h1>
           <button
             className="ml-auto focus:outline-none"
             onClick={() => {
@@ -109,17 +110,15 @@ export default function Course() {
           className="flex flex-col gap-5 mt-5"
           onSubmit={handleSubmit(saveCourse)}
         >
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Name"
             disabled={isSubmitting}
             required
             {...register('name')}
           />
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Description"
             disabled={isSubmitting}
             required

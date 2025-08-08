@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import UpdateUserRequest from '../../models/user/UpdateUserRequest';
 import User from '../../models/user/User';
 import userService from '../../services/UserService';
+import Input from '../shared/Input';
 import Modal from '../shared/Modal';
 import Table from '../shared/Table';
 import TableItem from '../shared/TableItem';
@@ -177,30 +178,28 @@ export default function UsersTable({ data, isLoading }: UsersTableProps) {
           onSubmit={handleSubmit(handleUpdate)}
         >
           <div className="flex flex-col gap-5 sm:flex-row">
-            <input
+            <Input
               type="text"
-              className="input sm:w-1/2"
+              className="sm:w-1/2"
               placeholder="First Name"
               {...register('firstName')}
             />
-            <input
+            <Input
               type="text"
-              className="input sm:w-1/2"
+              className="sm:w-1/2"
               placeholder="Last Name"
               disabled={isSubmitting}
               {...register('lastName')}
             />
           </div>
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Username"
             disabled={isSubmitting}
             {...register('username')}
           />
-          <input
+          <Input
             type="password"
-            className="input"
             placeholder="Password"
             disabled={isSubmitting}
             {...register('password')}
@@ -216,9 +215,9 @@ export default function UsersTable({ data, isLoading }: UsersTableProps) {
           </select>
           <div>
             <label className="font-semibold mr-3">Active</label>
-            <input
+            <Input
               type="checkbox"
-              className="input w-5 h-5"
+              className="w-5 h-5"
               {...register('isActive')}
             />
           </div>

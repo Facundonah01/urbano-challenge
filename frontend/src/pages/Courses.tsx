@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 
 import CoursesTable from '../components/courses/CoursesTable';
 import Layout from '../components/layout';
+import Input from '../components/shared/Input';
 import Modal from '../components/shared/Modal';
 import useAuth from '../hooks/useAuth';
 import CreateCourseRequest from '../models/course/CreateCourseRequest';
@@ -50,7 +51,7 @@ export default function Courses() {
 
   return (
     <Layout>
-      <h1 className="font-semibold text-3xl mb-5">Manage Courses</h1>
+      <h1 className="font-normal text-3xl mb-5">Manage Courses</h1>
       <hr />
       {authenticatedUser.role !== 'user' ? (
         <button
@@ -63,18 +64,18 @@ export default function Courses() {
 
       <div className="table-filter">
         <div className="flex flex-row gap-5">
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
-            placeholder="Name"
+            className="w-1/2"
             value={name}
+            placeholder="Name"
             onChange={(e) => setName(e.target.value)}
           />
-          <input
+          <Input
             type="text"
-            className="input w-1/2"
-            placeholder="Description"
+            className="w-1/2"
             value={description}
+            placeholder="Description"
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
@@ -85,7 +86,7 @@ export default function Courses() {
       {/* Add User Modal */}
       <Modal show={addCourseShow}>
         <div className="flex">
-          <h1 className="font-semibold mb-3">Add Course</h1>
+          <h1 className="font-normal mb-3">Add Course</h1>
           <button
             className="ml-auto focus:outline-none"
             onClick={() => {
@@ -102,17 +103,15 @@ export default function Courses() {
           className="flex flex-col gap-5 mt-5"
           onSubmit={handleSubmit(saveCourse)}
         >
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Name"
             disabled={isSubmitting}
             required
             {...register('name')}
           />
-          <input
+          <Input
             type="text"
-            className="input"
             placeholder="Description"
             disabled={isSubmitting}
             required
